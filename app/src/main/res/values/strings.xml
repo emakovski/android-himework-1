@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Realized locales: EN, BE, UK, RU</string>
+    <string name="country_name">England</string>
+    <string name="country_name_land">England HORIZONTAL</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Реалізовані локалі: EN, BE, UK, RU</string>
+    <string name="country_name">Україна</string>
+    <string name="country_name_land">Україна HORIZONTAL</string>
+</resources>

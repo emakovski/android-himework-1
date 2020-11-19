@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Реализованные локали: EN, BE, UK, RU</string>
+    <string name="country_name">Россия</string>
+    <string name="country_name_land">Россия HORIZONTAL</string>
+</resources>
