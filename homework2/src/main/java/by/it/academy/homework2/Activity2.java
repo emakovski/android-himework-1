@@ -6,25 +6,40 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class Activity2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        int data=getIntentData();
-        int result=5*data;
+        ArrayList<Integer> data=getIntentData();
+        double average = 0;
+        for (Integer value : data) {
+            average += value;
+        }
+        average/=data.size();
+     //   System.out.println("Среднее арифметическое: "+average);
+
+        int sum = 0;
+        for (Integer integer : data) {
+            sum += integer;
+        }
+     //   System.out.println("Сумма всех чисел: "+sum);
+
         Intent intent=new Intent();
-        intent.putExtra("RESULT",result);
+        intent.putExtra("AVERAGE",average);
+        intent.putExtra("SUM",sum);
         setResult(Activity.RESULT_OK,intent);
         finish();
     }
 
-    private int getIntentData(){
+    private ArrayList<Integer> getIntentData(){
         Intent intent=getIntent();
         if (intent!=null){
-            return intent.getIntExtra("KEY",0);
+            return intent.getIntegerArrayListExtra("LIST");
         }
-        return 0;
+        return null;
     }
 }
