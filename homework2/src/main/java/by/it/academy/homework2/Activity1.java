@@ -40,8 +40,10 @@ public class Activity1 extends AppCompatActivity {
         if (requestCode==1 && resultCode== Activity.RESULT_OK){
             double result_avr=data.getDoubleExtra("AVERAGE",0);
             int result_sum=data.getIntExtra("SUM",0);
+            double result_res=data.getDoubleExtra("RES",0);
             System.out.println("Среднее арифметическое: "+result_avr);
             System.out.println("Сумма всех чисел: "+result_sum);
+            System.out.println("Результат деления двух частей: "+result_res);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Activity2 extends AppCompatActivity {
 
@@ -20,17 +21,30 @@ public class Activity2 extends AppCompatActivity {
             average += value;
         }
         average/=data.size();
-     //   System.out.println("Среднее арифметическое: "+average);
 
         int sum = 0;
         for (Integer integer : data) {
             sum += integer;
         }
-     //   System.out.println("Сумма всех чисел: "+sum);
+
+        List<Integer> sublist1= data.subList(0,(data.size()/2));
+        double subsum =0;
+        for (Integer integer : sublist1) {
+            subsum += integer;
+        }
+
+        List <Integer> sublist2= data.subList((data.size()/2),data.size());
+        double subdiv = 0;
+        for (Integer integer : sublist2) {
+            subdiv-=integer;
+        }
+
+        double res=subsum/subdiv;
 
         Intent intent=new Intent();
         intent.putExtra("AVERAGE",average);
         intent.putExtra("SUM",sum);
+        intent.putExtra("RES",res);
         setResult(Activity.RESULT_OK,intent);
         finish();
     }
