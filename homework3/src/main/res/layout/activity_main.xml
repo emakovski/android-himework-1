@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TableRow>
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_folder_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Attractions"
+            android:textSize="25sp"/>
+    </TableRow>
+    <TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_local_dining_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Dining"
+            android:textSize="25sp"/>
+    </TableRow>
+    <TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_school_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Education"
+            android:textSize="25sp"/>
+    </TableRow>
+    <TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_people_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Family"
+            android:textSize="25sp"/>
+    </TableRow>
+    <TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_favorite_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Health"
+            android:textSize="25sp"/>
+    </TableRow>
+    <TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_business_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Office"
+            android:textSize="25sp"/>
+    </TableRow>
+    <TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_shopping_cart_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Promotions"
+            android:textSize="25sp"/>
+    </TableRow>
+    <TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_radio_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Radio"
+            android:textSize="25sp"/>
+    </TableRow>
+    <TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_book_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Recipes"
+            android:textSize="25sp"/>
+    </TableRow>
+    <TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_directions_bike_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Sports"
+            android:textSize="25sp"/>
+    </TableRow>
+
+</TableLayout>
