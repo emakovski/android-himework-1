@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/photo"
+        android:layout_width="match_parent"
+        android:layout_height="205dp"
+        android:background="#a9a9a9"
+        android:gravity="center"
+        android:text="PHOTO"
+        android:textColor="@color/black"
+        android:textSize="80sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/ic_baseline_photo_camera_24"
+        app:layout_constraintBottom_toBottomOf="@id/photo"
+        app:layout_constraintRight_toRightOf="@id/photo"
+        android:layout_marginEnd="5dp"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="bottom"
+        android:text="   Title"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/photo" />
+
+    <TextView
+        android:id="@+id/a"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="top"
+        android:text="    _______________________________________________________"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="bottom"
+        android:text="   Price"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/a" />
+
+    <TextView
+        android:id="@+id/loc"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:gravity="bottom"
+        android:text="Location"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/price"
+        app:layout_constraintRight_toRightOf="@id/price" />
+
+    <ImageView
+        android:id="@+id/pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:src="@drawable/ic_baseline_location_on_24"
+        app:layout_constraintRight_toRightOf="@id/loc"
+        app:layout_constraintBottom_toBottomOf="@id/loc"
+        android:layout_marginEnd="5dp"/>
+
+    <TextView
+        android:id="@+id/b"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="top"
+        android:text="    ______________      ______________________________________"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/price"/>
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="bottom"
+        android:text="   Description"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/b"/>
+
+    <TextView
+        android:id="@+id/c"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="top"
+        android:text="    _______________________________________________________"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/desc"/>
+
+    <TextView
+        android:id="@+id/inv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="bottom"
+        android:text="   Inventory"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/c"/>
+
+    <TextView
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:gravity="bottom"
+        android:text="Weight"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/inv"
+        app:layout_constraintRight_toRightOf="@id/inv" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="top"
+        android:text="    ______________                                                 ______________"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/inv"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
