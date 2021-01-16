@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:background="#a9a9a9"
+            android:gravity="center"
+            android:text="PHOTO"
+            android:textColor="@color/black"
+            android:textSize="80sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#a9a9a9">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_gravity="right"
+            android:src="@drawable/ic_baseline_photo_camera_24" />
+    </FrameLayout>
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:gravity="bottom"
+            android:text="   Title"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="top"
+            android:text="    _______________________________________________________"
+            android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:gravity="bottom"
+            android:text="   Price"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="241dp"
+            android:layout_height="50dp"
+            android:gravity="bottom"
+            android:text="Location"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:src="@drawable/ic_baseline_location_on_24" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="top"
+        android:text="    ______________     ______________________________________"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="bottom"
+        android:text="   Description"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="top"
+        android:text="    _______________________________________________________"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="296dp"
+            android:layout_height="50dp"
+            android:gravity="bottom"
+            android:text="   Inventory"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="bottom"
+            android:text="Weight"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="top"
+        android:text="    ______________                                                 ______________"
+        android:textSize="15sp" />
+
+</LinearLayout>
