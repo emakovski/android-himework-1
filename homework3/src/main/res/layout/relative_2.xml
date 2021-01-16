@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/photo"
@@ -14,7 +13,7 @@
         android:text="PHOTO"
         android:textColor="@color/black"
         android:textSize="80sp"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentStart="true"/>
 
     <ImageView
         android:id="@+id/cam"
@@ -22,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:src="@drawable/ic_baseline_photo_camera_24"
-        app:layout_constraintBottom_toBottomOf="@id/photo"
-        app:layout_constraintRight_toRightOf="@id/photo"
+        android:layout_alignEnd="@id/photo"
+        android:layout_alignBottom="@id/photo"
         android:layout_marginEnd="5dp"/>
 
     <TextView
@@ -33,7 +32,7 @@
         android:gravity="bottom"
         android:text="   Title"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/photo" />
+        android:layout_below="@id/photo"/>
 
     <TextView
         android:id="@+id/a"
@@ -42,7 +41,7 @@
         android:gravity="top"
         android:text="    _______________________________________________________"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        android:layout_below="@id/title"/>
 
     <TextView
         android:id="@+id/price"
@@ -51,7 +50,7 @@
         android:gravity="bottom"
         android:text="   Price"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/a" />
+        android:layout_below="@id/a"/>
 
     <TextView
         android:id="@+id/loc"
@@ -60,8 +59,8 @@
         android:gravity="bottom"
         android:text="Location"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/price"
-        app:layout_constraintRight_toRightOf="@id/price" />
+        android:layout_alignEnd="@id/price"
+        android:layout_alignBottom="@id/price"/>
 
     <ImageView
         android:id="@+id/pic"
@@ -69,8 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:src="@drawable/ic_baseline_location_on_24"
-        app:layout_constraintRight_toRightOf="@id/loc"
-        app:layout_constraintBottom_toBottomOf="@id/loc"
+        android:layout_alignEnd="@id/loc"
+        android:layout_alignBottom="@id/loc"
         android:layout_marginEnd="5dp"/>
 
     <TextView
@@ -80,7 +79,7 @@
         android:gravity="top"
         android:text="    ______________      ______________________________________"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/price"/>
+        android:layout_below="@id/price"/>
 
     <TextView
         android:id="@+id/desc"
@@ -89,7 +88,7 @@
         android:gravity="bottom"
         android:text="   Description"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/b"/>
+        android:layout_below="@id/b"/>
 
     <TextView
         android:id="@+id/c"
@@ -98,7 +97,7 @@
         android:gravity="top"
         android:text="    _______________________________________________________"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/desc"/>
+        android:layout_below="@id/desc"/>
 
     <TextView
         android:id="@+id/inv"
@@ -107,7 +106,7 @@
         android:gravity="bottom"
         android:text="   Inventory"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/c"/>
+        android:layout_below="@id/c"/>
 
     <TextView
         android:layout_width="110dp"
@@ -115,8 +114,8 @@
         android:gravity="bottom"
         android:text="Weight"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/inv"
-        app:layout_constraintRight_toRightOf="@id/inv" />
+        android:layout_alignEnd="@id/inv"
+        android:layout_alignBottom="@id/inv"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -124,6 +123,6 @@
         android:gravity="top"
         android:text="    ______________                                                 ______________"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/inv"/>
+        android:layout_below="@id/inv"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
