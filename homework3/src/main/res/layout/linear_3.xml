@@ -52,7 +52,7 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:buttonTint="@android:color/holo_blue_light"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
