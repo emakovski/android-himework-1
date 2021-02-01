@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -13,8 +13,7 @@
         android:textColor="@color/black"
         android:textSize="35sp"
         android:textStyle="bold"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_alignParentStart="true"/>
 
     <EditText
         android:id="@+id/editText1"
@@ -26,8 +25,7 @@
         android:hint="    Email"
         android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView1" />
+        android:layout_below="@id/textView1"/>
 
     <EditText
         android:id="@+id/editText2"
@@ -39,8 +37,7 @@
         android:hint="    Password"
         android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText1" />
+        android:layout_below="@id/editText1"/>
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -53,8 +50,7 @@
         android:buttonTint="@android:color/holo_blue_light"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@id/editText2"
-        app:layout_constraintTop_toBottomOf="@id/editText2"/>
+        android:layout_below="@id/editText2"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -63,23 +59,23 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@color/black"
-        app:layout_constraintLeft_toRightOf="@id/checkBox"
-        app:layout_constraintTop_toBottomOf="@id/editText2"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/editText2"
+        android:layout_toEndOf="@id/checkBox"/>
 
     <Button
         android:id="@+id/button1"
         android:layout_width="380dp"
         android:layout_height="80dp"
         android:layout_marginTop="145dp"
+        android:layout_marginStart="20dp"
         android:background="@drawable/round_button"
         android:text="Sign in"
         android:textAllCaps="false"
         android:textSize="35sp"
         android:textStyle="bold"
         app:backgroundTintMode="multiply"
-        app:layout_constraintTop_toBottomOf="@id/checkBox"
-        app:layout_constraintStart_toStartOf="@id/editText2" />
+        android:layout_below="@id/checkBox"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -91,5 +87,7 @@
         android:textColor="#9A9A9A"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/button1"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@id/button1"/>
+
+
+</RelativeLayout>
