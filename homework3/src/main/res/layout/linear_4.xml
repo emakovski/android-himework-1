@@ -241,7 +241,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_baseline_directions_24"
+                android:src="@drawable/ic_baseline_link_24"
                 android:layout_marginTop="50dp"
                 android:layout_marginStart="60dp"/>
             <TextView
