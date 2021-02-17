@@ -30,17 +30,17 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="bottom"
-        android:text="   Title"
+        android:text="Title"
+        android:layout_marginStart="16dp"
         android:textSize="20sp"
         android:layout_below="@id/photo"/>
 
-    <TextView
+    <ImageView
         android:id="@+id/a"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="top"
-        android:text="    _______________________________________________________"
-        android:textSize="15sp"
+        android:layout_width="380dp"
+        android:layout_height="40dp"
+        android:background="@drawable/long_line"
+        android:layout_marginStart="16dp"
         android:layout_below="@id/title"/>
 
     <TextView
@@ -48,7 +48,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="bottom"
-        android:text="   Price"
+        android:text="Price"
+        android:layout_marginStart="16dp"
         android:textSize="20sp"
         android:layout_below="@id/a"/>
 
@@ -72,31 +73,37 @@
         android:layout_alignBottom="@id/loc"
         android:layout_marginEnd="5dp"/>
 
-    <TextView
+    <ImageView
         android:id="@+id/b"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="top"
-        android:text="    ______________      ______________________________________"
-        android:textSize="15sp"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:background="@drawable/long_line"
+        android:layout_alignStart="@id/price"
         android:layout_below="@id/price"/>
+    <ImageView
+        android:id="@+id/c"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:background="@drawable/long_line"
+        android:layout_alignStart="@id/loc"
+        android:layout_below="@id/loc"/>
 
     <TextView
         android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="bottom"
-        android:text="   Description"
+        android:text="Description"
+        android:layout_marginStart="16dp"
         android:textSize="20sp"
         android:layout_below="@id/b"/>
 
-    <TextView
-        android:id="@+id/c"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="top"
-        android:text="    _______________________________________________________"
-        android:textSize="15sp"
+    <ImageView
+        android:id="@+id/d"
+        android:layout_width="380dp"
+        android:layout_height="40dp"
+        android:background="@drawable/long_line"
+        android:layout_alignStart="@id/desc"
         android:layout_below="@id/desc"/>
 
     <TextView
@@ -104,11 +111,13 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="bottom"
-        android:text="   Inventory"
+        android:text="Inventory"
+        android:layout_marginStart="16dp"
         android:textSize="20sp"
-        android:layout_below="@id/c"/>
+        android:layout_below="@id/d"/>
 
     <TextView
+        android:id="@+id/weight"
         android:layout_width="110dp"
         android:layout_height="50dp"
         android:gravity="bottom"
@@ -117,12 +126,19 @@
         android:layout_alignEnd="@id/inv"
         android:layout_alignBottom="@id/inv"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="top"
-        android:text="    ______________                                                 ______________"
-        android:textSize="15sp"
+    <ImageView
+        android:id="@+id/e"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/long_line"
+        android:layout_alignStart="@id/inv"
         android:layout_below="@id/inv"/>
+    <ImageView
+        android:id="@+id/f"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/long_line"
+        android:layout_alignStart="@id/weight"
+        android:layout_below="@id/weight"/>
 
 </RelativeLayout>
