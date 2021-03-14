@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <Toolbar
+        android:id="@+id/toolbar_edit_work"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/save_edit_work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_done_24"
+                app:tint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/arrow_back_add_work"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="30dp"
+                android:text="@string/add_work"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:id="@+id/arrow_back_add_work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="20dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </Toolbar>
+
+    <TextView
+        android:id="@+id/application_date"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_edit_work"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/application_date" />
+    <TextView
+        android:id="@+id/work_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        tools:text="21.02.2021"
+        app:layout_constraintStart_toEndOf="@id/application_date"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_edit_work"/>
+
+    <TextView
+        android:id="@+id/work_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/accent"
+        app:layout_constraintTop_toBottomOf="@id/application_date"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/work_name"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"/>
+
+    <EditText
+        android:id="@+id/work_name_edit_text"
+        android:layout_width="0dp"
+        android:backgroundTint="@color/text_main"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/work_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/work_cost_edit_text"
+        android:hint="@string/work_name"
+        android:autofillHints=""
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/work_cost_edit_text"
+        android:layout_width="100dp"
+        android:backgroundTint="@color/text_main"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@id/work_name"
+        app:layout_constraintStart_toEndOf="@id/work_name_edit_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/work_cost"
+        android:autofillHints=""
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/work_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/accent"
+        app:layout_constraintTop_toBottomOf="@id/application_date"
+        app:layout_constraintStart_toStartOf="@id/work_cost_edit_text"
+        android:text="@string/work_cost"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textColor="@color/accent"
+        app:layout_constraintTop_toBottomOf="@id/work_name_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/description_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/text_main"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="@string/description"
+        android:autofillHints=""
+        android:inputType="text" />
+
+    <RadioGroup
+        android:id="@+id/add_work_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/description_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/work_icon_pending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/work_pending"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:checked="true"
+            android:onClick="onRadioButtonClicked"
+            android:button="@android:color/transparent"
+            android:textColor="@drawable/radio_text_pending"
+            app:drawableTopCompat="@drawable/radio_pending" />
+
+        <ImageView
+            android:id="@+id/arrow_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_forward_24"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/arrow_forward" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/work_icon_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/work_in_progress"
+            android:onClick="onRadioButtonClicked"
+            android:layout_weight="1"
+            android:textColor="@drawable/radio_text_in_progress"
+            android:gravity="center"
+            android:button="@android:color/transparent"
+            app:drawableTopCompat="@drawable/radio_in_progress" />
+
+        <ImageView
+            android:id="@+id/arrow_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_forward_24"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/arrow_forward" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/work_icon_completed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/work_completed"
+            android:gravity="center"
+            android:button="@android:color/transparent"
+            android:textColor="@drawable/radio_text_completed"
+            app:drawableTopCompat="@drawable/radio_completed" />
+
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
