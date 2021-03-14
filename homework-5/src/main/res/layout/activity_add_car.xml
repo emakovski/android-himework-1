@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Toolbar
+        android:id="@+id/toolbar_add_car"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/save_add_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_done_24"
+                app:tint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/arrow_back_add_car"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="30dp"
+                android:text="@string/add_car"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:id="@+id/arrow_back_add_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="20dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </Toolbar>
+
+    <TextView
+        android:id="@+id/add_car_photo"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/background"
+        android:text="@string/no_photo"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_add_car"/>
+
+    <TextView
+        android:id="@+id/owner_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/accent"
+        app:layout_constraintTop_toBottomOf="@id/add_car_photo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/owner_name"/>
+    <EditText
+        android:id="@+id/edit_text_owner_name_add_car"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/text_main"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/owner_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:autofillHints=""
+        android:inputType="textPersonName"
+        android:hint="@string/owner_name"/>
+    <TextView
+        android:id="@+id/producer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/accent"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_owner_name_add_car"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/producer"/>
+
+    <EditText
+        android:id="@+id/edit_text_producer_add_car"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/text_main"
+        app:layout_constraintTop_toBottomOf="@id/producer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/edit_text_model_add_car"
+        android:autofillHints=""
+        android:inputType="text"
+        android:hint="@string/producer"/>
+
+    <EditText
+        android:id="@+id/edit_text_model_add_car"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/text_main"
+        app:layout_constraintStart_toEndOf="@id/edit_text_producer_add_car"
+        app:layout_constraintTop_toBottomOf="@id/producer"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:autofillHints=""
+        android:inputType="text"
+        android:hint="@string/model"/>
+
+    <TextView
+        android:id="@+id/model"
+        android:textColor="@color/accent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/edit_text_model_add_car"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_owner_name_add_car"
+        android:text="@string/model"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"/>
+
+    <TextView
+        android:id="@+id/text_view_plate_number_add_car"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/accent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_producer_add_car"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/plate_number"/>
+
+    <EditText
+        android:id="@+id/edit_view_plate_number_add_car"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/text_main"
+        app:layout_constraintTop_toBottomOf="@id/text_view_plate_number_add_car"
+        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/plate_number"
+        android:autofillHints=""
+        android:inputType="text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

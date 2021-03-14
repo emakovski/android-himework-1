@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">homework-5</string>
+    <string name="car_list">Список машин</string>
+    <string name="no_cars_added">Машины не добавлены</string>
+    <string name="add_car">Добавить машину</string>
+    <string name="no_works_added">Работы не добавлены</string>
+    <string name="car_photo">Фото машины</string>
+    <string name="edit_car">Редактировать машину</string>
+    <string name="no_photo">Нет фото</string>
+    <string name="owner_name">Имя владельца</string>
+    <string name="producer">Производитель</string>
+    <string name="model">Модель</string>
+    <string name="car_info">Информация о маштне</string>
+    <string name="add_work">Добавить работу</string>
+    <string name="application_date">Дата заявки -</string>
+    <string name="work_name">Название работы</string>
+    <string name="work_cost">Стоимость ($)</string>
+    <string name="description">Описание</string>
+    <string name="work_pending">pending</string>
+    <string name="work_in_progress">in progress</string>
+    <string name="work_completed">completed</string>
+    <string name="arrow_forward">arrow forward</string>
+    <string name="delete_work">Удалить работу</string>
+    <string name="search">Поиск</string>
+    <string name="plate_number">Номерной знак</string>
+    <string name="fields_check_add_work">Пожалуйста, заполните все поля</string>
+    <string name="dialog_delete_work_message">Вы уверены, что хотите удалить работу?</string>
+    <string name="dialog_cancel">Отменить</string>
+    <string name="dialog_ok">OK</string>
+    <string name="currency_item">$</string>
+</resources>
