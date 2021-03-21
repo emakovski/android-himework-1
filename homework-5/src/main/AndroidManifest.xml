@@ -47,6 +47,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="by.it.academy.homework_5.contentprovider.WorkInfoContentProvider"
+            android:name=".contentprovider.WorkInfoContentProvider"
+            android:exported="true"
+            android:readPermission="by.it.academy.homework_5.READ_DATABASE"
+            android:writePermission="by.it.academy.homework_5.WRITE_DATABASE"/>
 
     </application>
 
