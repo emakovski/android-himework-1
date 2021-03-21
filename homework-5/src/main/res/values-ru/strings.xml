@@ -19,13 +19,13 @@
     <string name="work_pending">pending</string>
     <string name="work_in_progress">in progress</string>
     <string name="work_completed">completed</string>
+    <string name="work_all">все</string>
     <string name="arrow_forward">arrow forward</string>
     <string name="delete_work">Удалить работу</string>
     <string name="search">Поиск</string>
     <string name="plate_number">Номерной знак</string>
     <string name="fields_check_add_work">Пожалуйста, заполните все поля</string>
-    <string name="dialog_delete_work_message">Вы уверены, что хотите удалить работу?</string>
-    <string name="dialog_cancel">Отменить</string>
-    <string name="dialog_ok">OK</string>
+    <string name="remove_work">Удалить</string>
+    <string name="warning">Вы уверены, что хотите удалить?</string>
     <string name="currency_item">$</string>
 </resources>

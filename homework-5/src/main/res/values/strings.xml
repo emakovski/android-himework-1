@@ -19,13 +19,13 @@
     <string name="work_pending">pending</string>
     <string name="work_in_progress">in progress</string>
     <string name="work_completed">completed</string>
+    <string name="work_all">all</string>
     <string name="arrow_forward">arrow forward</string>
     <string name="delete_work">Delete work</string>
     <string name="search">Search</string>
     <string name="plate_number">Plate number</string>
     <string name="fields_check_add_work">Please fill in all the fields</string>
-    <string name="dialog_delete_work_message">Are you sure you want to delete work?</string>
-    <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_ok">OK</string>
+    <string name="remove_work">Remove work</string>
+    <string name="warning">Are you sure you want to delete data?</string>
     <string name="currency_item">$</string>
 </resources>

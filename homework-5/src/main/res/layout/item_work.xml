@@ -7,19 +7,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/shadow">
 
+<!--    <TextView-->
+<!--        android:id="@+id/working_progress_text_item"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:textSize="12sp"-->
+<!--        app:drawableTopCompat="@drawable/ic_repair"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.486"-->
+<!--        tools:text="in progress" />-->
+    <ImageView
+        android:id="@+id/working_progress"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_repair"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
         android:id="@+id/working_progress_text_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginStart="16dp"
-        android:textSize="12sp"
-        app:drawableTopCompat="@drawable/ic_repair"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.486"
-        tools:text="in progress" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/gray"
+        tools:text="in progress"
+        app:layout_constraintTop_toBottomOf="@id/working_progress"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/work_name_item"
@@ -63,7 +86,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
         android:textColor="@color/text_second"
-        android:text="@string/currency_item"
         app:layout_constraintEnd_toStartOf="@id/work_price_item"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

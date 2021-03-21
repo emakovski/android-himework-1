@@ -5,8 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <Toolbar
-        android:id="@+id/toolbar_edit_work"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_add_work"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/primary"
@@ -17,12 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/save_edit_work"
+            <ImageButton
+                android:id="@+id/save_add_work"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_done_24"
                 app:tint="@color/white"
+                android:background="@color/primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -39,12 +40,13 @@
                 android:textSize="20sp"
                 android:textColor="@color/white"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/arrow_back_add_work"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_arrow_back_24"
                 app:tint="@color/white"
+                android:background="@color/primary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +54,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:id="@+id/application_date"
@@ -62,7 +64,7 @@
         android:textSize="20sp"
         android:textColor="@color/black"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_edit_work"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_add_work"
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/application_date" />
     <TextView
@@ -75,7 +77,7 @@
         android:layout_marginTop="10dp"
         tools:text="21.02.2021"
         app:layout_constraintStart_toEndOf="@id/application_date"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_edit_work"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar_add_work"/>
 
     <TextView
         android:id="@+id/work_name"
@@ -149,70 +151,103 @@
         android:autofillHints=""
         android:inputType="text" />
 
-    <RadioGroup
-        android:id="@+id/add_work_radio_group"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/description_edit_text"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@id/description_edit_text">
 
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/work_icon_pending"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/work_pending"
             android:layout_weight="1"
-            android:gravity="center"
-            android:checked="true"
-            android:onClick="onRadioButtonClicked"
-            android:button="@android:color/transparent"
-            android:textColor="@drawable/radio_text_pending"
-            app:drawableTopCompat="@drawable/radio_pending" />
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/image_pending"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_repair" />
+
+            <TextView
+                android:id="@+id/text_pending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/work_pending" />
+        </LinearLayout>
+
 
         <ImageView
-            android:id="@+id/arrow_one"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_arrow_forward_24"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/arrow_forward" />
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/work_icon_progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/work_in_progress"
-            android:onClick="onRadioButtonClicked"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:textColor="@drawable/radio_text_in_progress"
-            android:gravity="center"
-            android:button="@android:color/transparent"
-            app:drawableTopCompat="@drawable/radio_in_progress" />
+            android:src="@drawable/ic_baseline_arrow_forward_24" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/image_in_progress"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_repair" />
+
+            <TextView
+                android:id="@+id/text_in_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/work_in_progress"
+                android:textColor="@color/gray" />
+        </LinearLayout>
 
         <ImageView
-            android:id="@+id/arrow_two"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_arrow_forward_24"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/arrow_forward" />
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_baseline_arrow_forward_24" />
 
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/work_icon_completed"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/work_completed"
-            android:gravity="center"
-            android:button="@android:color/transparent"
-            android:textColor="@drawable/radio_text_completed"
-            app:drawableTopCompat="@drawable/radio_completed" />
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
-    </RadioGroup>
+            <ImageView
+                android:id="@+id/image_completed"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_repair" />
+
+            <TextView
+                android:id="@+id/text_completed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/work_completed"
+                android:textColor="@color/gray" />
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
