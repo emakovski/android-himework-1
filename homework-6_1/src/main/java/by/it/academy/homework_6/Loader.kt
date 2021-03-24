@@ -6,7 +6,7 @@ import android.net.Uri
 class Loader {
     companion object {
 
-        private const val URI_PATH = "content://com.abra.homework_5.contentprovider.WorkInfoContentProvider/works_info"
+        private const val URI_PATH = "content://by.it.academy.homework_5.Contentprovider/works_info"
 
         fun loadAllWorks(activity: Activity): ArrayList<WorkInfo> {
             val workList = arrayListOf<WorkInfo>()
