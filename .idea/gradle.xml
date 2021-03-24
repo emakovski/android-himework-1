@@ -5,12 +5,18 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="testRunner" value="PLATFORM" />
+        <option name="disableWrapperSourceDistributionNotification" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/homework-5" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/homework2" />
+            <option value="$PROJECT_DIR$/homework3" />
+            <option value="$PROJECT_DIR$/homework4_1" />
+            <option value="$PROJECT_DIR$/homework4_2" />
+            <option value="$PROJECT_DIR$/homework5" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
