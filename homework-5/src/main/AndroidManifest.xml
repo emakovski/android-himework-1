@@ -49,7 +49,7 @@
         </activity>
         <provider
             android:authorities="by.it.academy.homework_5.contentprovider.WorkInfoContentProvider"
-            android:name=".contentprovider.WorkInfoContentProvider"
+            android:name=".Contentprovider"
             android:exported="true"
             android:readPermission="by.it.academy.homework_5.READ_DATABASE"
             android:writePermission="by.it.academy.homework_5.WRITE_DATABASE"/>

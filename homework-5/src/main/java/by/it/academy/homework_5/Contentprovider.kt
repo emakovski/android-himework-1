@@ -3,15 +3,15 @@ package by.it.academy.homework_5
 import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.UriMatcher
-import android.database.Cursor
 import android.net.Uri
-import cby.it.academy.homework_5.database.DataBaseCarInfo
+import by.it.academy.homework_5.database.DataBaseCarInfo
 
-class WorkInfoContentProvider : ContentProvider() {
+
+class Contentprovider : ContentProvider() {
     private var database: DataBaseCarInfo? = null
 
     companion object {
-        private const val AUTHORITY = "by.it.academy.homework_5.contentprovider.WorkInfoContentProvider"
+        private const val AUTHORITY = "by.it.academy.homework_5.Contentprovider"
         private const val URI_USER_CODE = 1
         private val uriMatcher: UriMatcher = UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTHORITY, "works_info", URI_USER_CODE)
