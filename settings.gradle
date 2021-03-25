@@ -1,4 +1,5 @@
-include ':homework-6'
+include ':homework-6_2'
+include ':homework-6_1'
 include ':homework-5'
 include ':homework4_2'
 include ':homework4_1'
