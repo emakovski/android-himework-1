@@ -3,21 +3,16 @@ package by.it.academy.homework_7_rx_java.activities
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import by.it.academy.homework_7_rx_java.DataBaseRepository
 import by.it.academy.homework_7_rx_java.R
-import by.it.academy.homework_7_rx_java.createDirectory
 import by.it.academy.homework_7_rx_java.data.CarInfo
-import by.it.academy.homework_7_rx_java.database.CarInfoDAO
-import by.it.academy.homework_7_rx_java.database.DataBaseCarInfo
 import by.it.academy.homework_7_rx_java.saveImage
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
@@ -40,8 +35,7 @@ class ActivityAddCar : AppCompatActivity() {
     private var photoWasLoaded: Boolean = false
     private lateinit var carPictureDirectory: File
     private lateinit var pathToPicture: String
-    private lateinit var dataBase: DataBaseCarInfo
-    private lateinit var carInfoDAO: CarInfoDAO
+    private lateinit var repository: DataBaseRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +50,7 @@ class ActivityAddCar : AppCompatActivity() {
         imgButtonApply = findViewById(R.id.save_add_car)
         fab = findViewById(R.id.fab_load_photo)
         noCarPhoto = findViewById(R.id.no_photo)
-        dataBase = DataBaseCarInfo.getDataBase(applicationContext)
-        carInfoDAO = dataBase.getCarInfoDAO()
+        repository = DataBaseRepository()
         createDirectoryForPictures()
         setSupportActionBar(toolbar)
         setListeners()
@@ -86,9 +79,10 @@ class ActivityAddCar : AppCompatActivity() {
         val plate = textPlate.text.toString()
         if (name.isNotEmpty() && producer.isNotEmpty() && model.isNotEmpty() && plate.isNotEmpty()) {
             val carInfo = CarInfo(pathToPicture, name, producer, model, plate)
-            carInfoDAO.add(carInfo)
-            setResult(Activity.RESULT_OK)
-            finish()
+            repository.addCar(carInfo).subscribe {
+                setResult(Activity.RESULT_OK)
+                finish()
+            }
         } else {
             Toast.makeText(this, "Fields can't be empty", Toast.LENGTH_SHORT).show()
         }
@@ -101,16 +95,26 @@ class ActivityAddCar : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        data?.extras?.get("data")?.run {
-            pathToPicture = saveImage(this as Bitmap, carPhoto, carPictureDirectory)
-            photoWasLoaded = true
-            noCarPhoto.visibility = View.INVISIBLE
+        if (data != null) {
+            if (data.extras != null) {
+                if (data.extras?.get("data") != null) {
+                    val photo = data.extras?.get("data") as Bitmap?
+                    if (photo != null) {
+                        pathToPicture = saveImage(photo, carPhoto, carPictureDirectory)
+                        photoWasLoaded = true
+                        noCarPhoto.visibility = View.INVISIBLE
+                    }
+                }
+            }
         }
     }
 
     private fun createDirectoryForPictures() {
-        createDirectory(applicationContext)?.run {
-            carPictureDirectory = this
+        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+            carPictureDirectory = File("${getExternalFilesDir(Environment.DIRECTORY_PICTURES)}/CarPictures")
+            if (!carPictureDirectory.exists()) {
+                carPictureDirectory.mkdir()
+            }
         }
     }
 }

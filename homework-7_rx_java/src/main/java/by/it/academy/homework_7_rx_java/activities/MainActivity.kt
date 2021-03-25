@@ -1,23 +1,22 @@
 package by.it.academy.homework_7_rx_java.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import androidx.appcompat.widget.SearchView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.it.academy.homework_7_rx_java.CarInfoAdapter
+import by.it.academy.homework_7_rx_java.DataBaseRepository
 import by.it.academy.homework_7_rx_java.R
-import by.it.academy.homework_7_rx_java.database.CarInfoDAO
-import by.it.academy.homework_7_rx_java.database.DataBaseCarInfo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 private const val ADD_ACTIVITY_CODE = 1
 private const val EDIT_ACTIVITY_CODE = 2
@@ -29,8 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CarInfoAdapter
     private lateinit var noCarsAddedText: TextView
-    private lateinit var database: DataBaseCarInfo
-    private lateinit var carInfoDAO: CarInfoDAO
+    private lateinit var repository: DataBaseRepository
     private lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,17 +37,13 @@ class MainActivity : AppCompatActivity() {
         fab = findViewById(R.id.addCarFab)
         recyclerView = findViewById(R.id.carListRecycler)
         noCarsAddedText = findViewById(R.id.emptyCarList_text)
-        initDatabase()
+        DataBaseRepository.initDatabase(applicationContext)
+        repository = DataBaseRepository()
         setRecyclerSettings()
         setFabListener()
         setAdapterListeners()
         writeLogToFile()
         setNoCarsTextViewVisibility()
-    }
-
-    private fun initDatabase() {
-        database = DataBaseCarInfo.getDataBase(this)
-        carInfoDAO = database.getCarInfoDAO()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -78,21 +72,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setRecyclerSettings() {
-        val allDataList = carInfoDAO.getAll().sortedBy { it.producer.toLowerCase() }
-        adapter = CarInfoAdapter(allDataList)
+        adapter = CarInfoAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        repository.getAllList()
+                .subscribe { list ->
+                    adapter.updateList(list.sortedBy { it.producer.toLowerCase(Locale.ROOT) })
+                    setNoCarsTextViewVisibility()
+                }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != RESULT_CODE_BUTTON_BACK) {
-            adapter.updateList(carInfoDAO.getAll().sortedBy { it.producer.toLowerCase() })
+            repository.getAllList()
+                    .subscribe { list ->
+                        adapter.updateList(list.sortedBy { it.producer.toLowerCase(Locale.ROOT) })
+                        setNoCarsTextViewVisibility()
+                    }
             if (!searchView.isIconified) {
                 searchView.onActionViewCollapsed()
             }
         }
-        setNoCarsTextViewVisibility()
     }
 
     private fun writeLogToFile() {

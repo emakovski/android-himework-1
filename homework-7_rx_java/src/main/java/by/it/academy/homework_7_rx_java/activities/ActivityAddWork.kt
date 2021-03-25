@@ -2,20 +2,15 @@ package by.it.academy.homework_7_rx_java.activities
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import by.it.academy.homework_7_rx_java.DataBaseRepository
 import by.it.academy.homework_7_rx_java.R
 import by.it.academy.homework_7_rx_java.data.WorkInfo
-import by.it.academy.homework_7_rx_java.database.DataBaseCarInfo
-import by.it.academy.homework_7_rx_java.database.WorkInfoDAO
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 private const val RESULT_CODE_BUTTON_BACK = 6
 
@@ -36,10 +31,8 @@ class ActivityAddWork : AppCompatActivity() {
     private lateinit var checkedStatus: String
     private lateinit var date: String
     private var currentCarId: Long = 0
-    private lateinit var database: DataBaseCarInfo
-    private lateinit var workInfoDAO: WorkInfoDAO
+    private lateinit var repository: DataBaseRepository
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_work)
@@ -56,8 +49,7 @@ class ActivityAddWork : AppCompatActivity() {
         tvPending = findViewById(R.id.text_pending)
         tvInProgress = findViewById(R.id.text_in_progress)
         tvCompleted = findViewById(R.id.text_completed)
-        database = DataBaseCarInfo.getDataBase(applicationContext)
-        workInfoDAO = database.getWorkInfoDAO()
+        repository = DataBaseRepository()
         loadDataFromIntent()
         setSupportActionBar(toolbar)
         setImageListeners()
@@ -66,6 +58,7 @@ class ActivityAddWork : AppCompatActivity() {
         checkedStatus = resources.getString(R.string.work_pending)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun getCurrentDate() {
         val simpleDateFormat = SimpleDateFormat.getDateInstance()
         date = simpleDateFormat.format(Date())
@@ -127,9 +120,11 @@ class ActivityAddWork : AppCompatActivity() {
         val workDescription = etWorkDescription.text.toString()
         val workCost = etWorkCost.text.toString()
         if (workName.isNotEmpty() && workDescription.isNotEmpty() && workCost.isNotEmpty()) {
-            workInfoDAO.addWork(WorkInfo(date, workName, workDescription, workCost, checkedStatus, currentCarId))
-            setResult(Activity.RESULT_OK)
-            finish()
+            repository.addWork(WorkInfo(date, workName, workDescription, workCost, checkedStatus, currentCarId))
+                    .subscribe {
+                        setResult(Activity.RESULT_OK)
+                        finish()
+                    }
         } else {
             Toast.makeText(this, "Fields can't be empty", Toast.LENGTH_SHORT).show()
         }

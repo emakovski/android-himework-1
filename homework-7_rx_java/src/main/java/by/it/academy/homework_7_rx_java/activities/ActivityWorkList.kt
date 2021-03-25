@@ -2,23 +2,22 @@ package by.it.academy.homework_7_rx_java.activities
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageButton
-import androidx.appcompat.widget.SearchView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import by.it.academy.homework_7_rx_java.DataBaseRepository
 import by.it.academy.homework_7_rx_java.R
 import by.it.academy.homework_7_rx_java.WorkInfoAdapter
 import by.it.academy.homework_7_rx_java.data.CarInfo
-import by.it.academy.homework_7_rx_java.database.DataBaseCarInfo
-import by.it.academy.homework_7_rx_java.database.WorkInfoDAO
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 private const val ADD_WORK_ACTIVITY_CODE = 3
@@ -31,16 +30,14 @@ class ActivityWorkList : AppCompatActivity() {
     private lateinit var imgButtonBack: ImageButton
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: WorkInfoAdapter
-    private lateinit var database: DataBaseCarInfo
-    private lateinit var workInfoDAO: WorkInfoDAO
     private lateinit var textCarName: TextView
     private lateinit var textCarModel: TextView
     private lateinit var textCarPlate: TextView
     private lateinit var noWorksAddedText: TextView
-
-    private var currentCarId: Long = 0
     private lateinit var currentCar: CarInfo
+    private var currentCarId: Long = 0
     private lateinit var searchView: SearchView
+    private lateinit var repository: DataBaseRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +50,6 @@ class ActivityWorkList : AppCompatActivity() {
         textCarModel = findViewById(R.id.car_model_works_list_toolbar)
         textCarPlate = findViewById(R.id.car_plate_works_list_toolbar)
         noWorksAddedText = findViewById(R.id.emptyWorkList_text)
-        initDatabase()
         setSupportActionBar(toolbar)
         getIntentData()
         setRecyclerSettings()
@@ -62,16 +58,15 @@ class ActivityWorkList : AppCompatActivity() {
         setNoWorksTextViewVisibility()
     }
 
-    private fun initDatabase() {
-        database = DataBaseCarInfo.getDataBase(this)
-        workInfoDAO = database.getWorkInfoDAO()
-    }
-
     private fun setRecyclerSettings() {
-        adapter = WorkInfoAdapter(workInfoDAO.getAllWorksForCar(currentCarId))
-        setAdapterListener()
+        adapter = WorkInfoAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        repository.getAllWorkListForCar(currentCarId)
+                .subscribe { list ->
+                    adapter.updateLists(list)
+                    setNoWorksTextViewVisibility()
+                }
     }
 
     private fun setAdapterListener() {
@@ -97,10 +92,9 @@ class ActivityWorkList : AppCompatActivity() {
     private fun getIntentData() {
         if (intent != null) {
             currentCar = intent.getParcelableExtra("carInfo") ?: CarInfo("", "", "", "","")
-            currentCarId = currentCar.id ?: -1
+            currentCarId = currentCar.id
             textCarName.text = currentCar.producer
             textCarModel.text = currentCar.model
-            textCarPlate.text = currentCar.plate
         }
     }
 
@@ -148,12 +142,15 @@ class ActivityWorkList : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != RESULT_CODE_BUTTON_BACK) {
-            adapter.updateLists(workInfoDAO.getAllWorksForCar(currentCarId))
+            repository.getAllWorkListForCar(currentCarId)
+                    .subscribe { list ->
+                        adapter.updateLists(list)
+                        setNoWorksTextViewVisibility()
+                    }
             if (!searchView.isIconified) {
                 searchView.onActionViewCollapsed()
             }
         }
-        setNoWorksTextViewVisibility()
     }
 
     override fun onBackPressed() {

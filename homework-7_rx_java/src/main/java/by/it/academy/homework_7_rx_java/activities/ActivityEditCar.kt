@@ -5,12 +5,14 @@ import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import by.it.academy.homework_7_rx_java.DataBaseRepository
 import by.it.academy.homework_7_rx_java.R
 import by.it.academy.homework_7_rx_java.createDirectory
 import by.it.academy.homework_7_rx_java.data.CarInfo
@@ -40,8 +42,7 @@ class ActivityEditCar : AppCompatActivity() {
     private lateinit var pathToPicture: String
     private lateinit var carPictureDirectory: File
     private lateinit var currentCarInfo: CarInfo
-    private lateinit var database: DataBaseCarInfo
-    private lateinit var carInfoDAO: CarInfoDAO
+    private lateinit var repository: DataBaseRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_car)
@@ -54,8 +55,8 @@ class ActivityEditCar : AppCompatActivity() {
         imgButtonBack = findViewById(R.id.arrow_back_edit_car)
         imgButtonApply = findViewById(R.id.save_edit_car)
         fab = findViewById(R.id.fab_edit_photo)
-        database = DataBaseCarInfo.getDataBase(applicationContext)
-        carInfoDAO = database.getCarInfoDAO()
+        repository = DataBaseRepository()
+        createDirectoryForPictures()
         setSupportActionBar(toolbar)
         setListeners()
         loadDataFromIntent()
@@ -107,9 +108,11 @@ class ActivityEditCar : AppCompatActivity() {
                 pathToPicture = ""
             }
             val carInfo = CarInfo(pathToPicture, name, producer, model, plate).also { it.id = carId }
-            carInfoDAO.update(carInfo)
-            setResult(Activity.RESULT_OK)
-            finish()
+            repository.updateCarInfo(carInfo)
+                    .subscribe() {
+                        setResult(Activity.RESULT_OK)
+                        finish()
+                    }
         } else {
             Toast.makeText(this, "Fields can't be empty", Toast.LENGTH_SHORT).show()
         }
@@ -129,8 +132,11 @@ class ActivityEditCar : AppCompatActivity() {
     }
 
     private fun createDirectoryForPictures() {
-        createDirectory(applicationContext)?.run {
-            carPictureDirectory = this
+        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+            carPictureDirectory = File("${getExternalFilesDir(Environment.DIRECTORY_PICTURES)}/CarPictures")
+            if (!carPictureDirectory.exists()) {
+                carPictureDirectory.mkdir()
+            }
         }
     }
 

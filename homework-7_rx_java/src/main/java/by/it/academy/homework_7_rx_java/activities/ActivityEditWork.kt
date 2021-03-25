@@ -1,19 +1,15 @@
 package by.it.academy.homework_7_rx_java.activities
 
+import android.annotation.SuppressLint
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import by.it.academy.homework_7_rx_java.DataBaseRepository
 import by.it.academy.homework_7_rx_java.R
 import by.it.academy.homework_7_rx_java.data.WorkInfo
-import by.it.academy.homework_7_rx_java.database.DataBaseCarInfo
-import by.it.academy.homework_7_rx_java.database.WorkInfoDAO
 import by.it.academy.homework_7_rx_java.setImageStatus
 
 private const val RESULT_CODE_BUTTON_BACK = 6
@@ -38,10 +34,8 @@ class ActivityEditWork : AppCompatActivity() {
     private lateinit var checkedStatus: String
     private var currentCarId: Long = 0
     private lateinit var currentWorkInfo: WorkInfo
-    private lateinit var database: DataBaseCarInfo
-    private lateinit var workInfoDAO: WorkInfoDAO
+    private lateinit var repository: DataBaseRepository
 
-    //    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_work)
@@ -60,14 +54,14 @@ class ActivityEditWork : AppCompatActivity() {
         tvInProgress = findViewById(R.id.text_in_progress0)
         tvCompleted = findViewById(R.id.text_completed0)
         tvCurrentWorkName = findViewById(R.id.work_name_edit_work)
-        database = DataBaseCarInfo.getDataBase(applicationContext)
-        workInfoDAO = database.getWorkInfoDAO()
+        repository = DataBaseRepository()
         setSupportActionBar(toolbar)
         setImageListeners()
         setButtonsListeners()
         loadDataFromIntent()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun loadDataFromIntent() {
         if (intent != null) {
             currentWorkInfo = intent.getParcelableExtra("workInfo")
@@ -157,9 +151,11 @@ class ActivityEditWork : AppCompatActivity() {
         val workCost = etWorkCost.text.toString()
         if (workName.isNotEmpty() && workDescription.isNotEmpty() && workCost.isNotEmpty()) {
             val workInfo = WorkInfo(currentWorkInfo.date, workName, workDescription, workCost, checkedStatus, currentCarId).also { it.id = currentWorkInfo.id }
-            workInfoDAO.update(workInfo)
-            setResult(Activity.RESULT_OK)
-            finish()
+            repository.updateWorkInfo(workInfo)
+                    .subscribe {
+                        setResult(Activity.RESULT_OK, intent)
+                        finish()
+                    }
         } else {
             Toast.makeText(this, "Fields can't be empty", Toast.LENGTH_SHORT).show()
         }
@@ -171,9 +167,10 @@ class ActivityEditWork : AppCompatActivity() {
                 .setMessage(getString(R.string.warning))
                 .setPositiveButton("Apply"
                 ) { dialogInterface, i ->
-                    workInfoDAO.delete(currentWorkInfo)
-                    setResult(RESULT_CODE_BUTTON_REMOVE)
-                    finish()
+                    repository.deleteWork(currentWorkInfo).subscribe {
+                        setResult(RESULT_CODE_BUTTON_REMOVE)
+                        finish()
+                    }
                 }
                 .setNegativeButton("Cancel") { dialogInterface, i -> dialogInterface.cancel() }
                 .setCancelable(false)
